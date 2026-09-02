@@ -1,16 +1,94 @@
-# React + Vite
+# 🌸 Gesture Garden
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Bring your hands to life.**
 
-Currently, two official plugins are available:
+Gesture Garden is an interactive browser-based creative experience that uses your webcam and real-time hand tracking to turn natural hand movements into digital art.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Move your index finger through the air to grow flowers, open your palm to release them into the scene, or switch to Write mode and draw letters and names using your finger.
 
-## React Compiler
+No mouse is required for the creative interactions.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🌸 Flower Garden
+
+Create a living digital garden using your hand.
+
+- ☝️ Move your index finger to continuously grow flowers
+- 🌸 Flowers appear naturally along your finger path
+- ✋ Open your palm to release the flowers
+- 🌬️ Released flowers float and fall with physics-inspired motion
+- ✊ Make a fist to erase flowers
+- ✨ Real-time hand skeleton and fingertip visualization
+
+### ✍️ Writing Mode
+
+Write directly in the air using your index finger.
+
+- ☝️ Draw letters, names, and shapes with your finger
+- 🎨 Select writing colors using hand gestures
+- ✌️ Open the color palette
+- ☝️ Point at a color and hold to select it
+- ✊ Use your fist as an eraser
+- 🖌️ Smooth continuous strokes
+- 🌈 Multiple writing colors available
+
+---
+
+## 🖐️ Gesture Controls
+
+| Gesture | Flower Mode | Write Mode |
+|---|---|---|
+| ☝️ Index Finger | Grow flowers | Write |
+| ✋ Open Palm | Release flowers | Pause |
+| ✊ Closed Fist | Erase flowers | Erase |
+| ✌️ Victory | — | Open color palette |
+| ☝️ Point + Hold | — | Select color |
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- **React.js**
+- **Vite**
+- **JavaScript (ES6+)**
+- **HTML5 Canvas**
+- **CSS3**
+
+### Computer Vision
+
+- **MediaPipe Tasks Vision**
+- **Gesture Recognizer**
+- Real-time hand landmark detection
+- Hand gesture classification
+
+### Browser APIs
+
+- WebRTC `getUserMedia()`
+- Canvas 2D API
+- `requestAnimationFrame()`
+
+---
+
+## 🧠 How It Works
+
+Gesture Garden processes the webcam feed in real time.
+
+```text
+Webcam
+   ↓
+MediaPipe Gesture Recognition
+   ↓
+Hand Landmarks
+   ↓
+Gesture Detection
+   ↓
+Gesture Garden Interaction Engine
+   ↓
+HTML5 Canvas
+   ↓
+Interactive Digital Art
