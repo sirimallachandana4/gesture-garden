@@ -93,6 +93,8 @@ HTML5 Canvas
    ↓
 Interactive Digital Art
 
+```
+
 The application tracks the user's hand landmarks and uses the index fingertip as the primary interaction point.
 
 Different gestures are mapped to different creative actions such as growing flowers, writing, releasing flowers, changing colors, and erasing.
