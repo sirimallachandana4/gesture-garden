@@ -136,6 +136,8 @@ In Write mode, users can open the color palette using the Victory gesture.
 They can then point at a color and hold their finger over it to select the writing color.
 
 📁 Project Structure
+
+```text
 gesture-garden/
 │
 ├── public/
@@ -164,6 +166,8 @@ gesture-garden/
 ├── package.json
 ├── vite.config.js
 └── README.md
+
+```
 🚀 Getting Started
 Prerequisites
 
