@@ -85,10 +85,103 @@ MediaPipe Gesture Recognition
    ↓
 Hand Landmarks
    ↓
-Gesture Detection
+Gesture Classification
    ↓
-Gesture Garden Interaction Engine
+Interaction Engine
    ↓
 HTML5 Canvas
+
+---
+
+# 🌸 Gesture Garden
+
+> Bring your hands to life.
+
+Short project description
+
+---
+
+## ✨ Features
+
+### 🌸 Flower Garden
+...
+
+### ✍️ Writing Mode
+...
+
+---
+
+## 🖐️ Gesture Controls
+...
+
+---
+
+## 🛠️ Tech Stack
+...
+
+---
+
+## 🧠 How It Works
+...
+
+---
+
+## 🎨 Interaction Design
+...
+
+---
+
+## 📁 Project Structure
+...
+
+---
+
+## 🚀 Getting Started
+...
+
+---
+
+## 📷 Camera Permissions
+...
+
+---
+
+## 🌐 Deployment
+...
+
+---
+
+## 📱 Mobile Support
+...
+
+---
+
+## ⚡ Performance
+...
+
+---
+
+## 🔮 Future Improvements
+...
+
+---
+
+## 🤝 Contributing
+...
+
+---
+
+## 📄 License
+...
+
+---
+
+## 👩‍💻 Author
+...
+
+---
+
+⭐ If you like Gesture Garden, consider giving the repository a star.
+
    ↓
 Interactive Digital Art
