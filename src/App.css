@@ -1,0 +1,1105 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  /* Better mobile viewport handling */
+  min-height: 100%;
+}
+
+body {
+  background: #08090d;
+}
+
+.gesture-app {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  /* Modern mobile browser viewport */
+  height: 100dvh;
+  min-height: 100dvh;
+
+  overflow: hidden;
+
+  background: #08090d;
+
+  isolation: isolate;
+
+  /* Prevent accidental touch scrolling */
+  touch-action: none;
+}
+
+/* =========================================
+   CAMERA
+========================================= */
+
+.camera-layer {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+
+  overflow: hidden;
+
+  background: #08090d;
+}
+
+.camera-full {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transform: scaleX(-1);
+
+  background: #08090d;
+
+  /* Prevent mobile browser interaction */
+  pointer-events: none;
+
+  user-select: none;
+}
+
+/* =========================================
+   CANVAS
+========================================= */
+
+.flower-layer {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  mix-blend-mode: normal;
+}
+
+/* =========================================
+   DARK OVERLAY
+========================================= */
+
+.gesture-app::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.48) 0%,
+      rgba(0, 0, 0, 0.05) 30%,
+      rgba(0, 0, 0, 0.02) 65%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.app-header {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 26px 32px;
+
+  pointer-events: none;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  color: white;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  font-size: 25px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.brand h1 {
+  margin: 0;
+
+  font-size: 20px;
+
+  font-weight: 650;
+
+  letter-spacing: -0.4px;
+}
+
+.brand p {
+  margin: 3px 0 0;
+
+  font-size: 12px;
+
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* =========================================
+   LIVE STATUS
+========================================= */
+
+.live-status {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 9px 13px;
+
+  border-radius: 30px;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  background: rgba(0, 0, 0, 0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  backdrop-filter: blur(15px);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #65ff9b;
+
+  box-shadow:
+    0 0 8px #65ff9b;
+
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* =========================================
+   INSTRUCTIONS
+========================================= */
+
+.instruction-card {
+  position: absolute;
+
+  left: 30px;
+  bottom: 105px;
+
+  z-index: 20;
+
+  width: 265px;
+
+  padding: 18px;
+
+  border-radius: 18px;
+
+  background: rgba(10, 10, 15, 0.52);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  backdrop-filter: blur(22px);
+
+  color: white;
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+.instruction-title {
+  margin-bottom: 14px;
+
+  font-size: 14px;
+
+  font-weight: 650;
+}
+
+.instruction-row {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 9px;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  font-size: 11px;
+
+  line-height: 1.4;
+}
+
+.instruction-row span:first-child {
+  width: 23px;
+
+  flex-shrink: 0;
+
+  font-size: 16px;
+
+  text-align: center;
+}
+
+/* =========================================
+   MODE PANEL
+========================================= */
+
+.mode-panel {
+  position: absolute;
+
+  left: 50%;
+  bottom: 28px;
+
+  transform: translateX(-50%);
+
+  z-index: 30;
+
+  display: flex;
+
+  gap: 5px;
+
+  padding: 5px;
+
+  border-radius: 18px;
+
+  background: rgba(12, 12, 18, 0.68);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.3);
+}
+
+.mode-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-width: 115px;
+
+  padding: 12px 18px;
+
+  border: 0;
+
+  border-radius: 13px;
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.58);
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  touch-action: manipulation;
+
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.mode-button:hover {
+  color: white;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mode-button.active {
+  color: white;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.mode-button:active {
+  transform: scale(0.96);
+}
+
+.mode-button span {
+  font-size: 17px;
+}
+
+/* =========================================
+   BOTTOM HINT
+========================================= */
+
+.bottom-hint {
+  position: absolute;
+
+  right: 32px;
+  bottom: 35px;
+
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  color: rgba(255, 255, 255, 0.48);
+
+  font-size: 10px;
+
+  letter-spacing: 0.3px;
+}
+
+.hint-line {
+  width: 25px;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* =========================================
+   TRACKING STATUS
+========================================= */
+
+.tracking-status {
+  position: absolute;
+
+  top: 90px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 20;
+
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  background: rgba(0, 0, 0, 0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(12px);
+
+  font-size: 10px;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   TRACKING CANVAS
+========================================= */
+
+.tracking-canvas {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 40;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   WRITING COLOR PICKER
+========================================= */
+
+.color-picker {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: min(340px, calc(100vw - 32px));
+
+  padding: 24px;
+
+  border-radius: 24px;
+
+  background: rgba(12, 12, 18, 0.62);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.4);
+
+  color: white;
+
+  z-index: 20;
+
+  /* Panel doesn't interfere with hand tracking */
+  pointer-events: none;
+
+  animation: colorPickerIn 0.2s ease-out;
+}
+
+@keyframes colorPickerIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -47%)
+      scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+}
+
+.color-picker-title {
+  text-align: center;
+
+  font-size: 16px;
+
+  font-weight: 650;
+
+  margin-bottom: 20px;
+}
+
+.color-options {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 18px;
+}
+
+.color-option {
+  position: relative;
+
+  width: 55px;
+  height: 55px;
+
+  padding: 0;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  border: 3px solid rgba(255, 255, 255, 0.3);
+
+  background: var(--color);
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.color-option:hover {
+  transform: scale(1.15);
+
+  border-color: white;
+}
+
+.color-option.selected {
+  transform: scale(1.15);
+
+  border-color: white;
+
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.22),
+    0 0 25px var(--color);
+}
+
+/* Hand-hover state */
+
+.color-option.hovered {
+  transform: scale(1.22);
+
+  border-color: white;
+
+  box-shadow:
+    0 0 0 5px rgba(255, 255, 255, 0.25),
+    0 0 30px var(--color);
+}
+
+.color-option::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -9px;
+
+  border-radius: 50%;
+
+  border: 2px solid transparent;
+
+  pointer-events: none;
+}
+
+.color-option.hovered::after {
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+.color-hint {
+  margin-top: 18px;
+
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  font-size: 11px;
+}
+
+.color-picker::after {
+  content: "☝️ Point at a color and hold";
+
+  display: block;
+
+  margin-top: 12px;
+
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 11px;
+}
+
+/* =========================================
+   HAND VISIBILITY / FINGER CURSOR
+========================================= */
+
+.color-finger-cursor {
+  position: absolute;
+
+  width: 30px;
+  height: 30px;
+
+  border: 3px solid white;
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 100;
+
+  pointer-events: none;
+
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.9),
+    0 0 25px rgba(255, 255, 255, 0.5);
+
+  transition:
+    width 0.12s ease,
+    height 0.12s ease;
+}
+
+.color-finger-cursor.hovering {
+  width: 42px;
+  height: 42px;
+
+  border-width: 4px;
+
+  box-shadow:
+    0 0 12px white,
+    0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  /* -----------------------------------------
+     APP / CAMERA
+  ----------------------------------------- */
+
+  .gesture-app {
+    width: 100vw;
+
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 100dvh;
+  }
+
+  .camera-layer {
+    width: 100%;
+    height: 100%;
+  }
+
+  .camera-full {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  /* -----------------------------------------
+     HEADER
+  ----------------------------------------- */
+
+  .app-header {
+    padding: 14px 16px;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+  }
+
+  .brand h1 {
+    font-size: 16px;
+
+    letter-spacing: -0.2px;
+  }
+
+  .brand p {
+    margin-top: 2px;
+
+    font-size: 10px;
+  }
+
+  .live-status {
+    gap: 6px;
+
+    padding: 7px 10px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.8px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* -----------------------------------------
+     TRACKING STATUS
+  ----------------------------------------- */
+
+  .tracking-status {
+    top: 66px;
+
+    padding: 6px 10px;
+
+    font-size: 9px;
+  }
+
+  /* -----------------------------------------
+     INSTRUCTIONS
+  ----------------------------------------- */
+
+  .instruction-card {
+    left: 12px;
+    bottom: 82px;
+
+    width: auto;
+
+    max-width: 270px;
+
+    padding: 12px 14px;
+
+    border-radius: 15px;
+  }
+
+  .instruction-title {
+    margin-bottom: 9px;
+
+    font-size: 12px;
+  }
+
+  .instruction-row {
+    gap: 7px;
+
+    margin-top: 6px;
+
+    font-size: 10px;
+
+    line-height: 1.35;
+  }
+
+  .instruction-row span:first-child {
+    width: 20px;
+
+    font-size: 14px;
+  }
+
+  /* -----------------------------------------
+     MODE PANEL
+  ----------------------------------------- */
+
+  .mode-panel {
+    left: 50%;
+
+    bottom: 12px;
+
+    width: calc(100% - 28px);
+
+    max-width: 300px;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    padding: 4px;
+
+    border-radius: 16px;
+  }
+
+  .mode-button {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 11px 10px;
+
+    gap: 6px;
+
+    border-radius: 12px;
+
+    font-size: 12px;
+  }
+
+  .mode-button span {
+    font-size: 15px;
+  }
+
+  /* -----------------------------------------
+     COLOR PICKER
+  ----------------------------------------- */
+
+  .color-picker {
+    width: calc(100% - 32px);
+
+    max-width: 340px;
+
+    padding: 20px 16px;
+
+    border-radius: 20px;
+  }
+
+  .color-picker-title {
+    margin-bottom: 16px;
+
+    font-size: 14px;
+  }
+
+  .color-options {
+    gap: 14px;
+  }
+
+  .color-option {
+    width: 48px;
+    height: 48px;
+  }
+
+  .color-hint {
+    margin-top: 14px;
+
+    font-size: 10px;
+  }
+
+  .color-picker::after {
+    margin-top: 10px;
+
+    font-size: 10px;
+  }
+
+  /* -----------------------------------------
+     FINGER CURSOR
+  ----------------------------------------- */
+
+  .color-finger-cursor {
+    width: 26px;
+    height: 26px;
+  }
+
+  .color-finger-cursor.hovering {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* -----------------------------------------
+     BOTTOM HINT
+  ----------------------------------------- */
+
+  .bottom-hint {
+    display: none;
+  }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+  .app-header {
+    padding: 12px;
+  }
+
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+  }
+
+  .brand h1 {
+    font-size: 14px;
+  }
+
+  .brand p {
+    font-size: 9px;
+  }
+
+  .live-status {
+    padding: 6px 8px;
+
+    font-size: 8px;
+  }
+
+  .instruction-card {
+    left: 10px;
+
+    bottom: 78px;
+
+    max-width: 235px;
+
+    padding: 10px 12px;
+  }
+
+  .instruction-title {
+    font-size: 11px;
+  }
+
+  .instruction-row {
+    font-size: 9px;
+  }
+
+  .mode-panel {
+    width: calc(100% - 20px);
+
+    bottom: 9px;
+  }
+
+  .mode-button {
+    padding: 10px 8px;
+
+    font-size: 11px;
+  }
+
+  .mode-button span {
+    font-size: 14px;
+  }
+
+  .color-picker {
+    width: calc(100% - 24px);
+
+    padding: 17px 12px;
+  }
+
+  .color-options {
+    gap: 11px;
+  }
+
+  .color-option {
+    width: 43px;
+    height: 43px;
+  }
+}
+
+/* =========================================
+   LANDSCAPE PHONES
+========================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+  .app-header {
+    padding: 10px 16px;
+  }
+
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+
+    font-size: 18px;
+  }
+
+  .brand h1 {
+    font-size: 14px;
+  }
+
+  .brand p {
+    display: none;
+  }
+
+  .tracking-status {
+    top: 55px;
+  }
+
+  .instruction-card {
+    left: 12px;
+
+    bottom: 65px;
+
+    width: 220px;
+
+    padding: 10px 12px;
+  }
+
+  .instruction-title {
+    margin-bottom: 6px;
+
+    font-size: 11px;
+  }
+
+  .instruction-row {
+    margin-top: 4px;
+
+    font-size: 9px;
+  }
+
+  .mode-panel {
+    bottom: 8px;
+  }
+
+  .mode-button {
+    padding: 9px 12px;
+
+    font-size: 11px;
+  }
+
+  .bottom-hint {
+    display: none;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
