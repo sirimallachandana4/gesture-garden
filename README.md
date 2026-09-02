@@ -91,7 +91,6 @@ Interaction Engine
    ↓
 HTML5 Canvas
 
----
 
 # 🌸 Gesture Garden
 
